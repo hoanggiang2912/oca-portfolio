@@ -89,12 +89,12 @@ export default function FileTabs() {
     <>
       <CommandBlock />
       <Tabs defaultValue="index" className="">
-        <TabsList className="w-full justify-start rounded-none bg-drac-current flex-1 h-14 shadow-lg border-b border-b-drac-comment overflow-x-auto scrollbar-hide gap-6">
+        <TabsList className="w-full justify-start rounded-none bg-drac-current flex-1 h-16 shadow-lg border-b border-b-drac-comment overflow-x-auto scrollbar-hide gap-6">
           {menuItems.map((item) => (
             <TabsTrigger
               value={item.name}
               key={item.title + item.url}
-              className={`px-2 text-base text-white flex items-center rounded-md border border-transparent ${item.name == page ? "tab tab-active" : ""}`}
+              className={`px-4 py-2 text-base text-white flex items-center rounded-md border border-transparent ${item.name == page ? "tab tab-active" : ""}`}
               onClick={() => updateUrl(searchParams.toString(), item.name)}
             >
               {item.icon}
