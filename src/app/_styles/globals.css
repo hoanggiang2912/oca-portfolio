@@ -33,7 +33,7 @@ body {
   }
 
   .tab.tab-active {
-    @apply !bg-white/20 border-white/20 rounded-full !text-white
+    @apply !bg-white/20 border-white/20
   }
 
   .h1 {

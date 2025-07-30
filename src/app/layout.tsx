@@ -1,6 +1,8 @@
 import { AppSidebar } from "@/components/layout/AppSidebar";
 import Header from "@/components/layout/Header";
 import ResizeableLayout from "@/components/layout/ResizeableLayout";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export default function RootLayout({
   children,
@@ -10,11 +12,13 @@ export default function RootLayout({
   return (
     <html>
       <body className="bg-background text-foreground min-h-screen font-mono overflow-hidden">
-        <Header />
-        <ResizeableLayout
-          leftChildren={<AppSidebar />}
-          rightChildren={children}
-        />
+        <Suspense fallback={<Loading />}>
+          <Header />
+          <ResizeableLayout
+            leftChildren={<AppSidebar />}
+            rightChildren={children}
+          />
+        </Suspense>
       </body>
     </html>
   );

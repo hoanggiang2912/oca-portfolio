@@ -40,7 +40,7 @@ export default function ResizeableLayout({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [leftPanelSize, rightPanelSize]);
 
   return (
     <MenuProvider>

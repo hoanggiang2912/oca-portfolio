@@ -12,7 +12,7 @@ type Action =
   | { type: "ADD"; payload: MenuItem } // payload is new menu item
   | { type: "UPDATE_ACTIVE_ITEM"; payload: MenuItem };
 
-interface MenuItem {
+export interface MenuItem {
   title: string;
   name: string;
   url: string;
@@ -101,18 +101,23 @@ interface MenuProviderProps {
 function MenuProvider({ children }: MenuProviderProps) {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const searchParams = useSearchParams();
-  const page = searchParams.get("page");
+  const [page, setPage] = React.useState<string | null>(
+    searchParams.get("page")
+  );
 
   const { menuItems } = state;
 
   React.useEffect(() => {
+    const currentPage = searchParams.get("page");
     const nextActive =
-      menuItems.find((item) => item.name === page) || menuItems[0] || null;
-    console.log(nextActive);
+      menuItems.find((item) => item.name === currentPage) ||
+      menuItems[0] ||
+      null;
+    setPage(currentPage);
     if (state.activeItem !== nextActive) {
       dispatch({ type: "UPDATE_ACTIVE_ITEM", payload: nextActive });
     }
-  }, [page]);
+  }, [page, searchParams, menuItems, state.activeItem]);
 
   return (
     <menuContext.Provider value={{ state, dispatch }}>

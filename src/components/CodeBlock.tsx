@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { CopyIcon, CheckIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CheckIcon, CopyIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import type { PrismAsyncLight as SyntaxHighlighterType } from "react-syntax-highlighter";
+import type { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 interface CodeBlockProps {
   children: string;
@@ -18,13 +20,14 @@ export function CodeBlock({
   showLineNumbers = false,
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
-  const [SyntaxHighlighter, setSyntaxHighlighter] = useState<any>(null);
-  const [theme, setTheme] = useState<any>(null);
+  const [SyntaxHighlighter, setSyntaxHighlighter] = useState<
+    typeof SyntaxHighlighterType | null
+  >(null);
+  const [theme, setTheme] = useState<typeof dracula | null>(null);
 
   useEffect(() => {
-    // Dynamic import to avoid SSR issues
     import("react-syntax-highlighter").then((mod) => {
-      setSyntaxHighlighter(() => mod.Prism);
+      setSyntaxHighlighter(() => mod.PrismAsyncLight);
       import("react-syntax-highlighter/dist/cjs/styles/prism").then(
         (themeMod) => {
           setTheme(themeMod.dracula);

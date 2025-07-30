@@ -1,7 +1,12 @@
 "use client";
 
 import "@/app/_styles/globals.css";
-import FileTabs from "@/components/home/FileTabs";
+import dynamic from "next/dynamic";
+import Loading from "./loading";
+const FileTabs = dynamic(() => import("@/components/home/FileTabs"), {
+  ssr: false,
+  loading: () => <Loading />,
+});
 
 export default function Home() {
   return (

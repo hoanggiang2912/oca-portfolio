@@ -7,27 +7,27 @@ export function MarkdownRenderer({ children }: { children: string }) {
   return (
     <ReactMarkdown
       components={{
-        h1: ({ node, inline, className, children, ...props }) => (
-          <h1 className="text-5xl text-primary font-bold" {...props}></h1>
+        h1: ({ ...props }) => (
+          <h1 className="text-5xl text-primary font-bold" {...props} />
         ),
-        code({ node, inline, className, children, ...props }) {
+        code({ className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || "");
 
-          if (inline) {
+          if (match) {
             return (
-              <code className="bg-drac-current/20 px-1.5 py-0.5 rounded text-drac-base">
-                {children}
-              </code>
+              <CodeBlock language={match[1]} className={className}>
+                {String(children).replace(/\n$/, "")}
+              </CodeBlock>
             );
           }
 
           return (
-            <CodeBlock
-              language={match?.[1] || "typescript"}
-              className={className}
+            <code
+              className="bg-drac-current/20 px-1.5 py-0.5 rounded text-drac-base"
+              {...props}
             >
-              {String(children).replace(/\n$/, "")}
-            </CodeBlock>
+              {children}
+            </code>
           );
         },
       }}

@@ -5,8 +5,10 @@ export function TerminalWindow({
   command,
   children,
   className = "",
+  result = "Command executed successfully",
 }: {
   command: string;
+  result?: string;
   children?: ReactNode;
   className?: string;
 }) {
@@ -45,9 +47,7 @@ export function TerminalWindow({
       {/* Render children after typing is complete */}
       {showContent && (
         <div className="mt-4">
-          {children || (
-            <p className="text-drac-yellow">Command executed successfully!</p>
-          )}
+          {children || <p className="text-drac-yellow">{result}</p>}
         </div>
       )}
     </div>

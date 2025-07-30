@@ -67,10 +67,9 @@ const coreBeliefs = [
 export default function AboutMe() {
   return (
     <div className="h-full overflow-auto p-6 font-mono text-drac-base">
-      <div className="prose prose-invert max-w-none py-6 space-y-12">
+      <div className="prose prose-invert max-w-none space-y-12">
         <div className="space-y-4">
           <h1 className="h1"># 🧑‍💻 About Me</h1>
-
           {/* Fun fact toggle */}
           <CodeBlock language="bash" showLineNumbers>
             {`const oca = {

@@ -1,8 +1,5 @@
-import React from "react";
-
 export default function MarkdownIcon({
   className,
-  fill,
 }: {
   className?: string;
   fill?: string;
