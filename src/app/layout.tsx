@@ -1,3 +1,4 @@
+import "@/app/_styles/globals.css";
 import { AppSidebar } from "@/components/layout/AppSidebar";
 import Header from "@/components/layout/Header";
 import ResizeableLayout from "@/components/layout/ResizeableLayout";

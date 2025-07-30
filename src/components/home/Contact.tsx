@@ -1,3 +1,5 @@
+"use client";
+
 import { TerminalWindow } from "../TerminalWindow";
 
 export default function Contact() {

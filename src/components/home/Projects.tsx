@@ -1,3 +1,5 @@
+"use client";
+
 import { CodeBlock } from "../CodeBlock";
 import { TerminalWindow } from "../TerminalWindow";
 import { ProjectCard } from "./ProjectCard";

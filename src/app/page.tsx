@@ -1,6 +1,3 @@
-"use client";
-
-import "@/app/_styles/globals.css";
 import dynamic from "next/dynamic";
 import Loading from "./loading";
 const FileTabs = dynamic(() => import("@/components/home/FileTabs"), {
